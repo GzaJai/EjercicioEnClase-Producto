@@ -1,5 +1,3 @@
-package com.project.service;
-
 import org.gestionproductos.model.Product;
 import org.gestionproductos.repository.ProductRepository;
 import org.gestionproductos.service.ProductService;
@@ -20,8 +18,8 @@ class ProductServiceTest {
 
     @BeforeEach
     void setUp() {
-        productRepository = mock(ProductRepository.class); // mock del repo
-        productService = new ProductService(productRepository); // inyectás el mock
+        productRepository = mock(ProductRepository.class);
+        productService = new ProductService(productRepository);
     }
 
     @DisplayName("Probamos que retorne un producto por su ID")
@@ -86,7 +84,7 @@ class ProductServiceTest {
 
         Product incompleteProduct = new Product();
         incompleteProduct.setId(10L);
-        incompleteProduct.setPrice(100); // nombre faltante (null)
+        incompleteProduct.setPrice(100);
 
         when(productRepository.save(incompleteProduct)).thenReturn(incompleteProduct);
 
@@ -95,7 +93,7 @@ class ProductServiceTest {
         System.out.println("🛠 Producto creado con datos incompletos: " + result);
 
         assertNotNull(result);
-        assertNull(result.getName()); // validamos que el nombre está efectivamente faltando
+        assertNull(result.getName());
         verify(productRepository, times(1)).save(incompleteProduct);
 
         System.out.println("✅ Resultado: el producto fue creado, aunque con nombre nulo \n");
