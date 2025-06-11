@@ -1,3 +1,5 @@
+package org.gestionproductos.service;
+
 import org.gestionproductos.model.Product;
 import org.gestionproductos.repository.ProductRepository;
 import org.gestionproductos.service.ProductService;
